@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import './TweetBox.css'
 import db from './firebase'
 import {Avatar, Button} from '@material-ui/core'
-function TweetBox() {
+function TweetBox({user}) {
     const [tweetMessage, setTweetMessage] = useState('');
     const [tweetImage, setTweetImage] = useState('');
 
@@ -10,12 +10,11 @@ function TweetBox() {
         e.preventDefault()
         db.collection('posts')
         .add({
-            displayName:'Abhishek Panwar',
-            username:'webabhishekk',
+            displayName:user.name,
             verified:true,
             text:tweetMessage,
             image:tweetImage,
-            avatar:'https://images.pexels.com/photos/1790393/pexels-photo-1790393.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'
+            avatar:user.photo
         })
         setTweetImage('')
         setTweetMessage('')
@@ -25,7 +24,7 @@ function TweetBox() {
         <div className='tweetBox'>
             <form>
                 <div className='tweetBox__input'>
-                    <Avatar src='' />
+                    <Avatar src={user.photo} />
                     <input type='text' placeholder='Whats happening??' value={tweetMessage} onChange={e=> setTweetMessage(e.target.value)} />
                 </div>
                 <input value={tweetImage} className='tweetBox__imageInput' placeholder='Enter Image URL' type='text' onChange={e=> setTweetImage(e.target.value)} />

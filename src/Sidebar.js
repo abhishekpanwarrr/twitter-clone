@@ -13,10 +13,11 @@ import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import {Button} from '@material-ui/core'
 
 
-function Sidebar() {
+function Sidebar({signOut}) {
     return (
         <div className='sidebar'>
-            <TwitterIcon className='sidebar__twitterIcon' />
+            <Button className='sidebar__logout' onClick={signOut}>Logout</Button>
+            <TwitterIcon className='sidebar__twitterIcon'/>
             <SidebarOption active='active' Icon={HomeIcon} text="Home" />
             <SidebarOption Icon={SearchIcon} text="Explore"/>
             <SidebarOption Icon={NotificationsNoneIcon} text="Notifications"/>

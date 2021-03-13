@@ -23,3 +23,8 @@
     font-size: 20px;
     font-weight: 800;
 }
+.feed__userName{
+    color: gray;
+    font-size: 15px;
+    text-transform: capitalize;
+}
